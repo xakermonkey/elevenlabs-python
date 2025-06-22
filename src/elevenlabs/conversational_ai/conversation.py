@@ -326,7 +326,8 @@ class Conversation:
         self._ws = None
         self._should_stop.set()
 
-        self.callback_end_session()
+        if self.callback_end_session is not None:
+            self.callback_end_session()
 
     def wait_for_session_end(self) -> Optional[str]:
         """Waits for the conversation session to end.
